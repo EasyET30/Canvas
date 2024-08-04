@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUI_Canvas.Views.InstructorView"
+             Title="InstructorView"
+             NavigatedTo="ContentPage_NavigatedTo"
+             >
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Text="Enrollments"
+            Clicked="Toolbar_EnrollmentsClicked"/>
+        <ToolbarItem
+            Text="Courses"
+            Clicked="Toolbar_CoursesClicked"/>
+    </ContentPage.ToolbarItems>
+    <VerticalStackLayout
+        Padding="30,0"
+        Spacing="25">
+        <SearchBar
+            Text="{Binding Query, Mode=TwoWay}"
+        ></SearchBar>
+        <!--ENROLLMENTS-->
+        <VerticalStackLayout IsVisible="{Binding IsEnrollmentsVisible}">
+            <Label 
+                Text="University Enrollments"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+            <ListView
+                ItemsSource="{Binding Students}"
+                SelectedItem="{Binding SelectedStudent}"/>
+            <Button 
+                Text="Add Enrollment"
+                Clicked="AddEnrollmentClicked"/>
+            <Button
+                Text="Edit Enrollment"
+                Clicked="EditEnrollmentClicked"/>
+            <Button
+                Text="Remove Enrollment"
+                Clicked="RemoveEnrollmentClicked"/>
+
+            <Button
+                Text="Cancel"
+                Clicked="CancelClicked"/>
+        </VerticalStackLayout>
+        
+        <!--COURSES-->
+        <VerticalStackLayout IsVisible="{Binding IsCoursesVisible}">
+            <Label 
+                Text="University Course List"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+            <ListView
+                ItemsSource="{Binding Courses}"
+                SelectedItem="{Binding SelectedCourse}"/>
+            <Button 
+                Text="Add Course"
+                Clicked="AddCourseClicked"/>
+            <Button
+                Text="Edit Course"
+                Clicked="EditCourseClicked"/>
+            <Button
+                Text="Remove Course"
+                Clicked="RemoveCourseClicked"/>
+            <Button
+                Text="Cancel"
+                Clicked="CourseCancelClicked"/>
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

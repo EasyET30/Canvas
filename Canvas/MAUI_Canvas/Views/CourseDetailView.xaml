@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUI_Canvas.Views.CourseDetailView"
+             Title="CourseDetailView"
+             NavigatedFrom="OnLeaving"
+             NavigatedTo="OnArriving"
+             >
+    <VerticalStackLayout
+        Padding="30,0"
+        Spacing="25">
+        <Label
+            Text="Course Details"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="8*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label 
+                Text="Code"
+                VerticalOptions="Center" 
+                HorizontalOptions="Start" 
+                Grid.Row="0"
+                Grid.Column="0"/>
+            <Entry 
+                Text="{Binding Path=Code, Mode=TwoWay}"
+                Grid.Row="1"
+                Grid.Column="0"/>
+            <Label 
+                Text="Name"
+                VerticalOptions="Center" 
+                HorizontalOptions="Start" 
+                Grid.Row="0"
+                Grid.Column="1"/>
+            <Entry 
+                Text="{Binding Path=Name, Mode=TwoWay}"
+                Grid.Row="1"
+                Grid.Column="1"/>
+            
+        </Grid>
+
+        <!--STUDENT ROSTER-->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Text="Not Enrolled" Grid.Column="0"/>
+            <Label Text="Enrolled" Grid.Column="1"/>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <ListView
+                ItemsSource="{Binding NotEnrolled}"
+                SelectedItem="{Binding SelectedStudent}"
+                Grid.Column="0">
+            </ListView>
+            <ListView
+                ItemsSource="{Binding Enrolled}"
+                SelectedItem="{Binding SelectedStudent}"
+                Grid.Column="2">
+            </ListView>
+            <Button Text="Add Student"
+                    Clicked="AddToRoster"
+                    Grid.Column="1"/>
+            <Button Text="Remove Student"
+                    Clicked="RemoveFromRoster"
+                    Grid.Column="3"/>
+        </Grid>
+        <!-- Modules -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button
+                Text="Add Module"
+                Clicked="AddModuleClicked"
+                Grid.Column="0"/>
+            <Button
+                Text="Edit Module"
+                Clicked="EditModuleClicked"
+                Grid.Column="1"/>
+            <Button
+                Text="Remove Module"
+                Clicked="RemoveModuleClicked"
+                Grid.Column="2"/>
+        </Grid>
+        <Label
+            Text="Modules"/>
+        <ListView
+            ItemsSource="{Binding Modules}"
+            SelectedItem="{Binding SelectedModule}">
+        </ListView>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button
+                Text="Add Assignment"
+                Clicked="AddAssignmentClicked"
+                Grid.Column="1"
+                Grid.Row="0"/>
+            <Button
+                Text="Remove Assignment"
+                Clicked="RemoveAssignmentClicked"
+                Grid.Column="2"
+                Grid.Row="0"/>
+            <Label
+                Text="Name"
+                Grid.Column="0"
+                Grid.Row="1"/>
+            <Entry
+                Text="{Binding Path=AssignmentName, Mode=TwoWay}"
+                Grid.Column="0"
+                Grid.Row="2"/>
+            <Label
+                Text="Description"
+                Grid.Column="1"
+                Grid.Row="1"/>
+            <Entry
+                Text="{Binding Path=AssignmentDescription, Mode=TwoWay}"
+                Grid.Column="1"
+                Grid.Row="2"/>
+            <Label
+                Text="Due Date"
+                Grid.Column="2"
+                Grid.Row="1"/>
+            <Entry
+                Text="{Binding Path=DueDate, Mode=TwoWay}"
+                Grid.Column="2"
+                Grid.Row="2"/>
+            <Label
+                Text="Points"
+                Grid.Column="3"
+                Grid.Row="1"/>
+            <Entry
+                Text="{Binding Path=Points, Mode=TwoWay}"
+                Grid.Column="3"
+                Grid.Row="2"/>
+        </Grid>
+        <Label
+            Text="Assignments"/>
+        <ListView
+            ItemsSource="{Binding Assignments}"
+            SelectedItem="{Binding SelectedAssignment}">
+        </ListView>
+
+        <Button Text="Ok"
+                Clicked="OkClicked"/>
+        <Button Text="Cancel"
+                Clicked="CancelClicked"/>
+    </VerticalStackLayout>
+</ContentPage>

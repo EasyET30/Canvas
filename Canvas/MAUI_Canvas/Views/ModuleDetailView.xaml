@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUI_Canvas.Views.ModuleDetailView"
+             Title="ModuleDetail"
+             NavigatedFrom="OnLeaving"
+             NavigatedTo="OnArriving"
+             >
+    <VerticalStackLayout
+        Padding="30,0"
+        Spacing="25">
+        <Label
+            Text="Module Details"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label
+                Text="Name"
+                Grid.Column="0"
+                Grid.Row="0"/>
+            <Label
+                Text="Description"
+                Grid.Column="1"
+                Grid.Row="0"/>
+            <Entry 
+                Text="{Binding Path=Name, Mode=TwoWay}"
+                Grid.Column="0"
+                Grid.Row="1"/>
+            <Entry 
+                Text="{Binding Path=Description, Mode=TwoWay}"
+                Grid.Column="1"
+                Grid.Row="01"/>
+        </Grid>
+            <Label
+                Text="Contents"/>
+            <ListView
+                ItemsSource="{Binding Contents}"
+                SelectedItem="{Binding SelectedContent}"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label
+                Text="Name"
+                Grid.Column="0"
+                Grid.Row="1"/>
+            <Label
+                Text="Description"
+                Grid.Column="1"
+                Grid.Row="1"/>
+            <Entry 
+                Text="{Binding Path=ContentName, Mode=TwoWay}"
+                Grid.Column="0"
+                Grid.Row="2"/>
+            <Entry 
+                Text="{Binding Path=ContentDescription, Mode=TwoWay}"
+                Grid.Column="2"
+                Grid.Row="2"/>
+            <Button
+                Text="Add"
+                Clicked="AddContentClicked"
+                Grid.Column="0"
+                Grid.Row="0"/>
+            <Button
+                Text="Remove"
+                Clicked="RemoveContentClicked"
+                Grid.Column="1"
+                Grid.Row="0"/>
+        </Grid>
+
+        <Button 
+            Text="Ok"
+            Clicked="OkClicked"/>
+        <Button 
+            Text="Cancel"
+            Clicked="CancelClicked"/>
+    </VerticalStackLayout>
+</ContentPage>

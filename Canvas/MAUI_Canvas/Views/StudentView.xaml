@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUI_Canvas.Views.StudentView"
+             Title="StudentView"
+             NavigatedFrom="OnLeaving"
+             NavigatedTo="OnArriving">
+    <VerticalStackLayout
+        Padding="30,0"
+        Spacing="25">
+        <VerticalStackLayout IsVisible="{Binding IsLoginVisible}"
+            Padding="30,0"
+            Spacing="25">
+            <Label 
+                Text="Login"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"/>
+            <ListView
+                ItemsSource="{Binding Students}"
+                SelectedItem="{Binding SelectedStudent}">
+            </ListView>
+
+            <Button
+                Text="Login"
+                Clicked="LoginClicked"/>
+            <Button
+                Text="Cancel"
+                Clicked="CancelClicked"/>
+
+        </VerticalStackLayout>
+        <VerticalStackLayout IsVisible="{Binding IsStudentViewVisible}"
+            Padding="30,0"
+            Spacing="25">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                   <RowDefinition/> 
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label
+                    Text="Courses"
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    HorizontalOptions="Center"/>
+                <ListView
+                    ItemsSource="{Binding CoursesDetail}"
+                    SelectedItem="{Binding SelectedCourse}"
+                    Grid.Column="0"
+                    Grid.Row="1">
+                </ListView>
+                <Label
+                    Text="Modules"
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    HorizontalOptions="Center"/>
+                <ListView
+                    ItemsSource="{Binding Modules}"
+                    Grid.Column="1"
+                    Grid.Row="1">
+                </ListView>
+                <Label
+                    Text="Assignments"
+                    Grid.Column="1"
+                    Grid.Row="2"
+                    HorizontalOptions="Center"/>
+                <ListView
+                    ItemsSource="{Binding Assignments}"
+                    Grid.Column="1"
+                    Grid.Row="3">
+                </ListView>
+            </Grid>
+            <Button
+                Text="View Course Details"
+                Clicked="DetailsClicked"/>
+            <Button
+                Text="Cancel"
+                Clicked="CancelClicked"/>
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>
